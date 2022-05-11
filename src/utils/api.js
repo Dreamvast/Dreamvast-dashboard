@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 export function getUserDetails() {
-    return axios.get(process.env.AUTH_URL, {
+    return axios.get(`http://localhost:1193/api/auth`, {
     withCredentials: true })
 }

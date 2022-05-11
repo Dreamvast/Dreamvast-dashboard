@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/react'
 export function LandingPage() {
-    const login = () => window.location.href = process.env.LOGIN_URL
+    const login = () => window.location.href = 'http://localhost:1193/api/auth/discord'
     return (
-        <Button variantColor="blue" onClick={login} >Login</Button>
+        <Button variantcolor="blue" onClick={login} >Login</Button>
     )
 }
