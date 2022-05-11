@@ -3,17 +3,22 @@ import { getUserDetails } from "../../utils/api"
 import { useNavigate } from 'react-router-dom'
 export function MenuPage() {
     const [user, setUser] = React.useState(null)
+    const [loading, setLoading] = React.useState(true)
     const navigate = useNavigate()
     React.useEffect(() => {
         getUserDetails()
         .then(({data}) => {
             setUser(data)
             console.log(data)
+            setLoading(false)
         }).catch((err) => {
             navigate('/')
+            setLoading(false)
         })
-    }, [])
-    return (
-        <h1>MenuPage</h1>
+    }, [navigate])
+    return !loading && (
+        <div>
+            <h1>MenuPage</h1>
+        </div>
     )
 }
