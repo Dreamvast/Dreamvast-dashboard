@@ -1,9 +1,11 @@
 import React from 'react';
-import { getUserDetails } from "../../utils/api"
+import { getUserDetails, getGuilds } from "../../utils/api"
 import { useNavigate } from 'react-router-dom'
+import { MenuComponent } from '../../components'
 export function MenuPage() {
     const [user, setUser] = React.useState(null)
     const [loading, setLoading] = React.useState(true)
+    const [ guilds, setGuilds ] = React.useState([])
     const navigate = useNavigate()
     React.useEffect(() => {
         getUserDetails()
@@ -11,6 +13,10 @@ export function MenuPage() {
             setUser(data)
             console.log(data)
             setLoading(false)
+            return getGuilds()
+        }).then(({ data }) => {
+            console.log(data)
+            setGuilds(data)
         }).catch((err) => {
             navigate('/')
             setLoading(false)
@@ -19,6 +25,7 @@ export function MenuPage() {
     return !loading && (
         <div>
             <h1>MenuPage</h1>
+            <MenuComponent guilds={ guilds }/>
         </div>
     )
 }

@@ -14,7 +14,7 @@ function App() {
     <Routes>
       <Route path="/" exact={true} element={<LandingPage />}/>
       <Route path="/menu" exact={true} element={<MenuPage />}/>
-      <Route path="/dashboard" exact={true} element={<DashboardPage />}/>
+      <Route path="/dashboard/:id" exact={true} element={<DashboardPage />}/>
     </Routes>
   );
 }
