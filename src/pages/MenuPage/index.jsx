@@ -18,6 +18,7 @@ export function MenuPage() {
             console.log(data)
             setGuilds(data)
         }).catch((err) => {
+            console.log(err)
             navigate('/')
             setLoading(false)
         })
